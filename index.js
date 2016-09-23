@@ -5,17 +5,9 @@ var pg = require('pg');
 
 app.set('port', (process.env.PORT || 5000));
 
-// this can be removed
-app.use(express.static(__dirname + '/public'));
-
-// this can be removed
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
 // this should just return a status true or something
 app.get('/', function(request, response) {
-  response.render('pages/index');
+  response.json({status: true, code: 'realgraph-listen'});
 });
 
 app.get('/realgraph/listen', function(request, response) {
@@ -25,9 +17,14 @@ app.get('/realgraph/listen', function(request, response) {
 		client.query(queryString, [request.query.url, request.query.url], function(err, result) {
 			done();
 			if (err)
-				{ console.error(err); response.send("Error " + err); }
+				{ 
+					console.error(err); response.send("Error " + err); 
+					response.json({status: false});
+				}
 			else
-				{ response.json({status: true}); }
+				{ 
+					response.json({status: true}); 
+				}
 		});
 	});
 });

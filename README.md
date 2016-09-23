@@ -1,16 +1,14 @@
-# node-js-getting-started
+# realgraph-listener
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
-
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+Realgraph Listener listens for the Realgraph beacon installed on webpages.  It is a barebones Node.js app using [Express 4](http://expressjs.com/).
 
 ## Running Locally
 
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
 ```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
+$ git clone git@github.com:ronrlin/realgraph-listener.git 
+$ cd realgraph-listener
 $ npm install
 $ npm start
 ```
@@ -24,11 +22,13 @@ $ heroku create
 $ git push heroku master
 $ heroku open
 ```
-or
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
 ## Documentation
+
+Realgraph Listener
+
+1. Listens for 'pings' to /realgraph/listen
+2. Writes { timestamp, url, hash(url) } to a PostgreSQL database
+3. Responds with a status code or with valid JSON that may be rendered by a client
 
 For more information about using Node.js on Heroku, see these Dev Center articles:
 

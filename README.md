@@ -37,3 +37,22 @@ For more information about using Node.js on Heroku, see these Dev Center article
 - [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
 - [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
 - [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+
+
+```
+$ heroku pg:psql
+
+> create table realgraph_pings (
+	created_time TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_timestamp, 
+	url VARCHAR(500), 
+	hash TEXT
+);
+
+> insert into realgraph_pings (url, hash) values ('http://www.example.com/some/url', md5('http://www.example.com/some/url'));
+```
+
+To delete content from the table:
+```
+DELETE FROM realgraph_pings;
+
+```

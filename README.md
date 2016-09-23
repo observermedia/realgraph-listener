@@ -30,6 +30,14 @@ Realgraph Listener
 2. Writes { timestamp, url, hash(url) } to a PostgreSQL database
 3. Responds with a status code or with valid JSON that may be rendered by a client
 
+## Realgraph Beacon
+
+Insert the following script onto any page you'd like to track using the Realgraph </body>.
+
+```
+<script type='text/javascript' async="async" src='http://realgraph-listener.herokuapp.com/beacon.js'></script>
+```
+
 For more information about using Node.js on Heroku, see these Dev Center articles:
 
 - [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)

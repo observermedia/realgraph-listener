@@ -17,17 +17,19 @@ app.get('/realgraph/listen', function(request, response) {
 		client.query(queryString, [request.query.url, request.query.url], function(err, result) {
 			done();
 			if (err)
-				{ 
-					console.error(err); response.send("Error " + err); 
+				{
+					console.error(err); response.send("Error " + err);
 					response.json({status: false});
 				}
 			else
-				{ 
-					response.json({status: true}); 
+				{
+					response.json({status: true});
 				}
 		});
 	});
 });
+
+app.use(express.static(__dirname + '/beacon'));
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

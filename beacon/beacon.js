@@ -59,9 +59,11 @@
 	function main() {
 		//your widget code goes here
 		jQuery(document).ready(function ($) {
-			//or you could wait until the page is ready
-            var listener = "http://realgraph-listener.herokuapp.com/realgraph/listen";
-			jQuery.getJSON(listener, function(result) {
+            var url      = window.location.href;     // Returns full URL
+            var sample_url = "http://www.pluto.org/go";
+            var listener = "http://realgraph-listener.herokuapp.com/realgraph/listen?url=";
+            listener += sample_url;
+			jQuery.getJSON(rgquery, function(result) {
 				alert("win");
 			});
 

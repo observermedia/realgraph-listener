@@ -11,10 +11,11 @@ app.get('/', function(request, response) {
 });
 
 app.get('/realgraph/listen', function(request, response) {
-	request.query.url
+	//request.query.url
+	//request.url
 	var queryString = "INSERT INTO realgraph_pings(url, hash) VALUES ($1, md5($2))";
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-		client.query(queryString, [request.query.url, request.query.url], function(err, result) {
+		client.query(queryString, [request.url, request.url], function(err, result) {
 			done();
 			if (err)
 				{

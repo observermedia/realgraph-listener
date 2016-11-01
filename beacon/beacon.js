@@ -63,6 +63,8 @@
             var sample_url = "http://www.pluto.org/go";
             var listener = "http://realgraph-listener.herokuapp.com/realgraph/listen?url=";
             listener += sample_url;
+            console.log(listener);
+            console.log("hiyo");
 			jQuery.getJSON(rgquery, function(result) {
 				alert("win");
 			});

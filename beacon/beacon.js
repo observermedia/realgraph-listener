@@ -65,7 +65,7 @@
             listener += sample_url;
             console.log(listener);
             console.log("hiyo");
-			jQuery.getJSON(rgquery, function(result) {
+			jQuery.getJSON(listener, function(result) {
 				alert("win");
 			});
 

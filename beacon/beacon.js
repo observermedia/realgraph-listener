@@ -60,11 +60,9 @@
 		//your widget code goes here
 		jQuery(document).ready(function ($) {
             var url      = window.location.href;     // Returns full URL
-            var sample_url = "http://www.pluto.org/go";
+            //var sample_url = "http://www.pluto.org/go";
             var listener = "http://realgraph-listener.herokuapp.com/realgraph/listen?url=";
-            listener += sample_url;
-            console.log(listener);
-            console.log("hiyo");
+            listener += url;
 			jQuery.getJSON(listener, function(result) {
 				alert("win");
 			});

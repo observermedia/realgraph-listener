@@ -64,6 +64,7 @@
             listener += url;
 			jQuery.getJSON(listener, function(result) {
 				//alert("win");
+          console.log('hamburger');
 			});
 
 			//example load css

@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+app.use(allowCrossDomain);
 
 var pg = require('pg');
 var aws = require('aws-sdk');

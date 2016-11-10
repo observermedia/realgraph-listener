@@ -1,7 +1,7 @@
 (function(global) {
     var scriptName = "beacon.js"; //name of this script, used to get reference to own tag
     var jQuery; //noconflict reference to jquery
-    var jqueryPath = "http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js";
+    var jqueryPath = "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js";
     var jqueryVersion = "1.8.3";
     var scriptTag; //reference to the html script tag
 
@@ -63,7 +63,7 @@
             var listener = "https://widget.commercialobserver.com/realgraph/listen?url=";
             listener += url;
 			jQuery.getJSON(listener, function(result) {
-				alert("win");
+				//alert("win");
 			});
 
 			//example load css

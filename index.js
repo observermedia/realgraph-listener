@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 var pg = require('pg');
+var aws = require('aws-sdk');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -29,6 +30,49 @@ app.get('/realgraph/listen', function(request, response) {
 				}
 		});
 	});
+});
+
+app.get('/realgraph/entities_data', function (request, response) {
+  var aws_config = {
+    region: process.env.DYNAMO_REGION_NAME
+  };
+
+  aws.config.update(aws_config);
+  var DynamoClient = new aws.DynamoDB.DocumentClient();
+
+  var query_params = {
+    TableName: "EntityContent",
+    KeyConditionExpression: "#url = :current_url",
+    ExpressionAttributeNames: {
+      "#url": "article_url"
+    },
+    ExpressionAttributeValues: {
+      ":current_url": request.query.url
+    }
+  };
+
+  DynamoClient.query(query_params, function(err, data) {
+    if (err) {
+      console.error(err);
+      response.send("Error" + err);
+      response.json({status: false});
+    } else {
+      if (data.Count > 0) {
+        var item = data.Items[0];
+        var result = {
+          buildings: item.buildings.length > 0 ? item.buildings : [],
+          activities: item.activities.length > 0 ? item.activities : [],
+          organizations: item.organizations.length > 0 ? item.organizations : [],
+          people: item.people.length > 0 ? item.people : [],
+          status: true
+        };
+        response.json(result);
+      } else {
+        response.json({status: false})
+      }
+    }
+  })
+
 });
 
 app.use(express.static(__dirname + '/beacon'));

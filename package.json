@@ -12,7 +12,8 @@
   "dependencies": {
     "pg": "4.x",
     "ejs": "2.4.1",
-    "express": "4.13.3"
+    "express": "4.13.3",
+    "aws-sdk": "2.6.15"
   },
   "repository": {
     "type": "git",

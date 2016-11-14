@@ -55,16 +55,27 @@
         main();
     }
 
+    function pingListener(currentURL) {
+      var listener_ping_url = "https://widget.commercialobserver.com/realgraph/listen";
+      var data = {
+        url: currentURL
+      };
+      jQuery.getJSON(listener_ping_url, data, function(result){
+        console.log('Realgraph listener pinged')
+      });
+    }
+
 	/******** starting point for your widget ********/
 	function main() {
 		//your widget code goes here
 		jQuery(document).ready(function ($) {
-            var url      = window.location.href;     // Returns full URL
-            var listener = "https://widget.commercialobserver.com/realgraph/listen?url=";
-            listener += url;
-			jQuery.getJSON(listener, function(result) {
-          console.log('realgraph listener pinged');
-			});
+      var currentURL = window.location.href;     // Returns full URL
+      pingListener(currentURL);
+      // var listener_ping_url = "https://widget.commercialobserver.com/realgraph/listen?url=";
+      // listener_ping_url += url;
+      // jQuery.getJSON(listener_ping_url, function(result) {
+      //     console.log('realgraph listener pinged');
+      // });
 
 			//example load css
 			//loadCss("http://example.com/widget.css");

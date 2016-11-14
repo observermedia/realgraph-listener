@@ -63,8 +63,7 @@
             var listener = "https://widget.commercialobserver.com/realgraph/listen?url=";
             listener += url;
 			jQuery.getJSON(listener, function(result) {
-				//alert("win");
-          console.log('hamburger');
+          console.log('realgraph listener pinged');
 			});
 
 			//example load css

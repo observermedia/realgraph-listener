@@ -61,8 +61,18 @@
         url: currentURL
       };
       jQuery.getJSON(listener_ping_url, data, function(result){
-        console.log('Realgraph listener pinged')
+        console.log('Realgraph listener pinged');
       });
+    }
+
+    function getEntitiesData(currentURL) {
+      var url = "https://widget.commercialobserver.com/realgraph/entities_data";
+      var data = {
+        url: currentURL
+      };
+      jQuery.getJSON(url, data, function(result){
+        console.log(result);
+      })
     }
 
 	/******** starting point for your widget ********/

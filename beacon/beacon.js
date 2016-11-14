@@ -81,11 +81,7 @@
 		jQuery(document).ready(function ($) {
       var currentURL = window.location.href;     // Returns full URL
       pingListener(currentURL);
-      // var listener_ping_url = "https://widget.commercialobserver.com/realgraph/listen?url=";
-      // listener_ping_url += url;
-      // jQuery.getJSON(listener_ping_url, function(result) {
-      //     console.log('realgraph listener pinged');
-      // });
+      getEntitiesData(currentURL);
 
 			//example load css
 			//loadCss("http://example.com/widget.css");

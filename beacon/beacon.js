@@ -2,6 +2,7 @@
     var scriptName = "beacon.js"; //name of this script, used to get reference to own tag
     var jQuery; //noconflict reference to jquery
     var jqueryPath = "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js";
+    var jqueryTemplatePath = "https://widget.commercialobserver.com/jquery.loadTemplate.js";
     var jqueryVersion = "1.8.3";
     var scriptTag; //reference to the html script tag
 
@@ -52,7 +53,53 @@
 
     function initjQuery() {
         jQuery = window.jQuery.noConflict(true);
+        loadScript(jqueryTemplatePath, function(){});
         main();
+    }
+
+    function renderBuildingsInfo(dataDiv, buildingsData){
+      dataDiv.append('<h3 class="story-entity-cards-header">Buildings in this story</h3>');
+
+      for(var i=0 ; i<buildingsData.length ; i++){
+
+      }
+    }
+
+    function renderOrganizationsInfo(dataDiv){
+      console.log('render organizations');
+    }
+
+    function renderPeopleInfo(dataDiv){
+      console.log('render people');
+    }
+
+    function renderActivitiesInfo(dataDiv){
+      console.log('render activities');
+    }
+
+
+    function renderEntitiesData(data) {
+      var buildingsDataDiv = jQuery("div#realgraph-buildings-data");
+      var organizationsDataDiv = jQuery("div#realgraph-organizations-data");
+      var peopleDataDiv = jQuery("div#realgraph-people-data");
+      var activitiesDataDiv = jQuery("div#realgraph-activities-data");
+
+      if (data['buildings'].length > 0 && buildingsDataDiv > 0){
+        // Add the header, then iterate over every building and add an html snippet displaying it.
+        renderBuildingsInfo(buildingsDataDiv[0], data['buildings']);
+      }
+
+      if (data['organizations'].length > 0 && organizationsDataDiv > 0){
+        renderOrganizationsInfo(organizationsDataDiv[0], data['organizations']);
+      }
+
+      if (data['people'].length > 0 && peopleDataDiv > 0){
+        renderPeopleInfo(peopleDataDiv[0], data['people']);
+      }
+
+      if (data['activities'].length > 0 && activitiesDataDiv > 0){
+        renderActivitiesInfo(activitiesDataDiv[0], data['activities']);
+      }
     }
 
     function pingListener(currentURL) {

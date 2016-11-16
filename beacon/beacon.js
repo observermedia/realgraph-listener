@@ -63,19 +63,12 @@
       dataDiv.append('<h3 class="story-entity-cards-header">Buildings in this story</h3>');
 
       for(var i=0 ; i<buildingsData.length ; i++){
-        var address = '';
         var data = buildingsData[i];
-
-        if (!data['primary_address']){
-          address = data['addresses'][0];
-        } else {
-          address = data['primary_address'];
-        }
 
         var renderData = {
           buildingURL: data['entity_url'],
           buildingName: data['name'],
-          address: address
+          address: data['address']
         };
         var new_div =$('<div/>', {class: "xsmall-card building-card"});
         new_div.loadTemplate(buildingTemplatePath, renderData);

@@ -97,7 +97,7 @@
       var peopleDataDiv = jQuery("div#realgraph-people-data");
       var activitiesDataDiv = jQuery("div#realgraph-activities-data");
 
-      if (data['buildings'].length > 0 && buildingsDataDiv > 0){
+      if (data['buildings'].length > 0 && buildingsDataDiv.length > 0){
         // Add the header, then iterate over every building and add an html snippet displaying it.
         renderBuildingsInfo(buildingsDataDiv[0], data['buildings']);
       } else {
@@ -106,15 +106,15 @@
         console.log(buildingsDataDiv);
       }
 
-      if (data['organizations'].length > 0 && organizationsDataDiv > 0){
+      if (data['organizations'].length > 0 && organizationsDataDiv.length > 0){
         renderOrganizationsInfo(organizationsDataDiv[0], data['organizations']);
       }
 
-      if (data['people'].length > 0 && peopleDataDiv > 0){
+      if (data['people'].length > 0 && peopleDataDiv.length > 0){
         renderPeopleInfo(peopleDataDiv[0], data['people']);
       }
 
-      if (data['activities'].length > 0 && activitiesDataDiv > 0){
+      if (data['activities'].length > 0 && activitiesDataDiv.length > 0){
         renderActivitiesInfo(activitiesDataDiv[0], data['activities']);
       }
     }

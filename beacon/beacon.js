@@ -149,7 +149,11 @@
       var currentURL = window.location.href;     // Returns full URL
       pingListener(currentURL);
       var entities_data = getEntitiesData(currentURL);
-      renderEntitiesData(entities_data);
+      if (entities_data.status){
+        renderEntitiesData(entities_data);
+      } else {
+        console.log('Entities data status is false');
+      }
 
 			//example load css
 			//loadCss("http://example.com/widget.css");

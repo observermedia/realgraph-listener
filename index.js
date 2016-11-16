@@ -84,7 +84,9 @@ app.get('/realgraph/entities_data', function (request, response) {
         };
         response.json(result);
       } else {
-        response.json({status: 'This URL does not exist in Entity Content Database'})
+        response.json({
+          status: false,
+          description: 'This URL does not exist in Entity Content Database'})
       }
     }
   })

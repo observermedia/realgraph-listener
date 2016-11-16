@@ -70,7 +70,7 @@
           buildingName: data['name'],
           address: data['address']
         };
-        var new_div =$('<div/>', {class: "xsmall-card building-card"});
+        var new_div =$('<div/>', {class: "xsmall-card building-card", style: "margin-right: 25px;"});
         new_div.loadTemplate(buildingTemplatePath, renderData);
         dataDiv.append(new_div);
       }

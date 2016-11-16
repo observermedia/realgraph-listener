@@ -77,8 +77,9 @@
           buildingName: data['name'],
           address: address
         };
-        // dataDiv.loadTemplate(buildingTemplatePath, renderData);
-        $("div#realgraph-buildings-data").loadTemplate(buildingTemplatePath, renderData);
+        var new_div =$('<div/>', {class: "xsmall-card building-card"});
+        new_div.loadTemplate(buildingTemplatePath, renderData);
+        dataDiv.append(new_div);
       }
     }
 

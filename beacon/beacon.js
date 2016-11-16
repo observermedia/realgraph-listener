@@ -78,7 +78,7 @@
           address: address
         };
         // dataDiv.loadTemplate(buildingTemplatePath, renderData);
-        jQuery("div#realgraph-buildings-data").loadTemplate(buildingTemplatePath, renderData);
+        $("div#realgraph-buildings-data").loadTemplate(buildingTemplatePath, renderData);
       }
     }
 

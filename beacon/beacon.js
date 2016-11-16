@@ -77,7 +77,8 @@
           buildingName: data['name'],
           address: address
         };
-        dataDiv.loadTemplate(buildingTemplatePath, renderData);
+        // dataDiv.loadTemplate(buildingTemplatePath, renderData);
+        jQuery("div#realgraph-buildings-data").loadTemplate(buildingTemplatePath, renderData);
       }
     }
 

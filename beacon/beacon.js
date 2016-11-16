@@ -3,6 +3,7 @@
     var jQuery; //noconflict reference to jquery
     var jqueryPath = "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js";
     var jqueryTemplatePath = "https://widget.commercialobserver.com/jquery.loadTemplate.js";
+    var buildingTemplatePath = "https://widget.commercialobserver.com/templates/building.html";
     var jqueryVersion = "1.8.3";
     var scriptTag; //reference to the html script tag
 
@@ -61,7 +62,19 @@
       dataDiv.append('<h3 class="story-entity-cards-header">Buildings in this story</h3>');
 
       for(var i=0 ; i<buildingsData.length ; i++){
+        var address = '';
+        if (isNull(buildingsData[i]['primary_address'])){
+          address = buildingsData[i]['addresses'][0];
+        } else {
+          address = buildingsData[i]['primary_address'];
+        }
 
+        var renderData = {
+          buildingURL: buildingsData[i]['entity_url'],
+          buildingName: buildingsData[i]['name'],
+          address: address
+        };
+        dataDiv.loadTemplate(buildingTemplatePath, renderData);
       }
     }
 
@@ -87,6 +100,10 @@
       if (data['buildings'].length > 0 && buildingsDataDiv > 0){
         // Add the header, then iterate over every building and add an html snippet displaying it.
         renderBuildingsInfo(buildingsDataDiv[0], data['buildings']);
+      } else {
+        console.log('Not running buildings render');
+        console.log(data['buildings']);
+        console.log(buildingsDataDiv);
       }
 
       if (data['organizations'].length > 0 && organizationsDataDiv > 0){
@@ -117,9 +134,12 @@
       var data = {
         url: currentURL
       };
+      var entities_data = {};
       jQuery.getJSON(url, data, function(result){
         console.log(result);
-      })
+        entities_data = result;
+      });
+      return entities_data;
     }
 
 	/******** starting point for your widget ********/
@@ -128,7 +148,8 @@
 		jQuery(document).ready(function ($) {
       var currentURL = window.location.href;     // Returns full URL
       pingListener(currentURL);
-      getEntitiesData(currentURL);
+      var entities_data = getEntitiesData(currentURL);
+      renderEntitiesData(entities_data);
 
 			//example load css
 			//loadCss("http://example.com/widget.css");

@@ -66,7 +66,7 @@
         var data = buildingsData[i];
 
         var renderData = {
-          buildingURL: data['entity_url'],
+          buildingURL: data['url'],
           buildingName: data['name'],
           address: data['address']
         };

@@ -129,16 +129,19 @@
       });
     }
 
-    function getEntitiesData(currentURL) {
+    function getAndRenderEntitiesData(currentURL) {
       var url = "https://widget.commercialobserver.com/realgraph/entities_data";
       var data = {
         url: currentURL
       };
       jQuery.getJSON(url, data, function(result){
         console.log(result);
-        entities_data = result;
+        if (result.status){
+          renderEntitiesData(result);
+        } else {
+          console.log('Entities data status is false');
+        }
       });
-      return entities_data;
     }
 
 	/******** starting point for your widget ********/
@@ -147,12 +150,7 @@
 		jQuery(document).ready(function ($) {
       var currentURL = window.location.href;     // Returns full URL
       pingListener(currentURL);
-      var entities_data = getEntitiesData(currentURL);
-      if (entities_data.status){
-        renderEntitiesData(entities_data);
-      } else {
-        console.log('Entities data status is false');
-      }
+      getAndRenderEntitiesData(currentURL);
 
 			//example load css
 			//loadCss("http://example.com/widget.css");

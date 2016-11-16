@@ -134,7 +134,6 @@
       var data = {
         url: currentURL
       };
-      var entities_data = {};
       jQuery.getJSON(url, data, function(result){
         console.log(result);
         entities_data = result;

@@ -101,7 +101,7 @@
 
       if (data['buildings'].length > 0 && buildingsDataDiv.length > 0){
         // Add the header, then iterate over every building and add an html snippet displaying it.
-        renderBuildingsInfo(buildingsDataDiv[0], data['buildings']);
+        renderBuildingsInfo(buildingsDataDiv, data['buildings']);
       } else {
         console.log('Not running buildings render');
         console.log(data['buildings']);

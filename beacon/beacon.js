@@ -54,7 +54,7 @@
 
     function initjQuery() {
         jQuery = window.jQuery.noConflict(true);
-      loadScript(jqueryTemplatePath, function(){
+        jQuery.getScript(jqueryTemplatePath, function(){
           main();
         });
     }

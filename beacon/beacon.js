@@ -63,15 +63,17 @@
 
       for(var i=0 ; i<buildingsData.length ; i++){
         var address = '';
-        if (isNull(buildingsData[i]['primary_address'])){
-          address = buildingsData[i]['addresses'][0];
+        var data = buildingsData[i];
+
+        if (!data['primary_address']){
+          address = data['addresses'][0];
         } else {
-          address = buildingsData[i]['primary_address'];
+          address = data['primary_address'];
         }
 
         var renderData = {
-          buildingURL: buildingsData[i]['entity_url'],
-          buildingName: buildingsData[i]['name'],
+          buildingURL: data['entity_url'],
+          buildingName: data['name'],
           address: address
         };
         dataDiv.loadTemplate(buildingTemplatePath, renderData);

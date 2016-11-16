@@ -54,8 +54,9 @@
 
     function initjQuery() {
         jQuery = window.jQuery.noConflict(true);
-        loadScript(jqueryTemplatePath, function(){});
-        main();
+      loadScript(jqueryTemplatePath, function(){
+          main();
+        });
     }
 
     function renderBuildingsInfo(dataDiv, buildingsData){

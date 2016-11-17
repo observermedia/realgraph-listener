@@ -4,6 +4,9 @@
     var jqueryPath = "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js";
     var jqueryTemplatePath = "https://widget.commercialobserver.com/jquery.loadTemplate.js";
     var buildingTemplatePath = "https://widget.commercialobserver.com/templates/building.html";
+    var organizationTemplatePath = 'https://widget.commercialobserver.com/templates/organization.html';
+    var personTemplatePath = 'https://widget.commercialobserver.com/templates/person.html';
+    var activityTemplatePath = 'https://widget.commercialobserver.com/templates/activity.html';
     var jqueryVersion = "1.8.3";
     var scriptTag; //reference to the html script tag
 
@@ -76,16 +79,64 @@
       }
     }
 
-    function renderOrganizationsInfo(dataDiv){
-      console.log('render organizations');
+    function renderOrganizationsInfo(dataDiv, organizationsData){
+      dataDiv.append('<h3 class="story-entity-cards-hewader">Organizations in this story</h3>');
+
+      for(var i=0 ; i<organizationsData.length ; i++){
+        var data = organizationsData[i];
+
+        var renderData = {
+          organizationURL: data['url'],
+          organizationTypes: data['types'],
+          organizationName: data['name']
+        };
+        var new_div = $('<div/>', {class: "xsmall-card organization-card", style: "margin-right: 25px;"});
+        new_div.loadTemplate(organizationTemplatePath, renderData);
+        dataDiv.append(new_div);
+      }
+
     }
 
-    function renderPeopleInfo(dataDiv){
-      console.log('render people');
+    function renderPeopleInfo(dataDiv, peopleData){
+      dataDiv.append('<h3 class="xsmall-card person-card">People in this story</h3>');
+
+      for(var i=0 ; i<peopleData.length ; i++){
+        var data = peopleData[i];
+
+        var renderData = {
+          personURL: data['url'],
+          personAvatar: data['avatar'],
+          personName: data['name'],
+          personHeadline: data['headline']
+        };
+        var new_div = $('<div/>', {class: "xsmall-card person-card", style: "margin-right: 25px;"});
+        new_div.loadTemplate(personTemplatePath, renderData);
+        dataDiv.append(new_div);
+      }
+
     }
 
-    function renderActivitiesInfo(dataDiv){
-      console.log('render activities');
+    function renderActivitiesInfo(dataDiv, activitiesData){
+      dataDiv.append('<h3 class="xsmall-card activity-card">Activities / Transactions in this story</h3>');
+
+      for(var i=0 ; i<activitiesData.length ; i++){
+        var data = activitiesData[i];
+        var activity_type = data['type'];
+        var activity_type_class = activity_type.toLowerCase() + '-label';
+        var activity_date_content = '&nbsp;&nbsp;&middot;&nbsp;&nbsp;' + data['date'];
+
+        var renderData = {
+          activityURL: data['url'],
+          activityType: activity_type,
+          activityTypeClass: activity_type_class,
+          activityDateContent: activity_date_content,
+          propertyName: data['property_name']
+        };
+        var new_div = $('<div/>', {class: "xsmall-card activity-card", style: "margin-right: 25px;"});
+        new_div.loadTemplate(activityTemplatePath, renderData);
+        dataDiv.append(new_div);
+      }
+
     }
 
 

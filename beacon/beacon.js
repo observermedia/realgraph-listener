@@ -185,6 +185,8 @@
         console.log(data['activities']);
         console.log(activitiesDataDiv);
       }
+
+      $('.dotdotdot').dotdotdot();
     }
 
     function pingListener(currentURL) {

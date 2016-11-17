@@ -80,7 +80,7 @@
     }
 
     function renderOrganizationsInfo(dataDiv, organizationsData){
-      dataDiv.append('<h3 class="story-entity-cards-hewader">Organizations in this story</h3>');
+      dataDiv.append('<h3 class="story-entity-cards-header">Organizations in this story</h3>');
 
       for(var i=0 ; i<organizationsData.length ; i++){
         var data = organizationsData[i];
@@ -98,7 +98,7 @@
     }
 
     function renderPeopleInfo(dataDiv, peopleData){
-      dataDiv.append('<h3 class="xsmall-card person-card">People in this story</h3>');
+      dataDiv.append('<h3 class="story-entity-cards-header">People in this story</h3>');
 
       for(var i=0 ; i<peopleData.length ; i++){
         var data = peopleData[i];
@@ -117,7 +117,7 @@
     }
 
     function renderActivitiesInfo(dataDiv, activitiesData){
-      dataDiv.append('<h3 class="xsmall-card activity-card">Activities / Transactions in this story</h3>');
+      dataDiv.append('<h3 class="story-entity-cards-header">Activities / Transactions in this story</h3>');
 
       for(var i=0 ; i<activitiesData.length ; i++){
         var data = activitiesData[i];
@@ -139,7 +139,6 @@
 
     }
 
-
     function renderEntitiesData(data) {
       var buildingsDataDiv = jQuery("div#realgraph-buildings-data");
       var organizationsDataDiv = jQuery("div#realgraph-organizations-data");
@@ -156,15 +155,27 @@
       }
 
       if (data['organizations'].length > 0 && organizationsDataDiv.length > 0){
-        renderOrganizationsInfo(organizationsDataDiv[0], data['organizations']);
+        renderOrganizationsInfo(organizationsDataDiv, data['organizations']);
+      } else {
+        console.log('Not running organizations render');
+        console.log(data['organizations']);
+        console.log(organizationsDataDiv);
       }
 
       if (data['people'].length > 0 && peopleDataDiv.length > 0){
-        renderPeopleInfo(peopleDataDiv[0], data['people']);
+        renderPeopleInfo(peopleDataDiv, data['people']);
+      } else {
+        console.log('Not running people render');
+        console.log(data['people']);
+        console.log(peopleDataDiv);
       }
 
       if (data['activities'].length > 0 && activitiesDataDiv.length > 0){
-        renderActivitiesInfo(activitiesDataDiv[0], data['activities']);
+        renderActivitiesInfo(activitiesDataDiv, data['activities']);
+      } else {
+        console.log('Not running activities render');
+        console.log(data['activities']);
+        console.log(activitiesDataDiv);
       }
     }
 

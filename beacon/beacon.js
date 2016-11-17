@@ -81,7 +81,7 @@
           buildingName: data['name'],
           address: data['address']
         };
-        var new_div =$('<div/>', {class: "xsmall-card building-card card-two-across", style: getMarginStyle(i)});
+        var new_div =$('<div/>', {class: "xsmall-card building-card", style: getMarginStyle(i)});
         new_div.loadTemplate(buildingTemplatePath, renderData);
         dataDiv.append(new_div);
       }
@@ -98,7 +98,7 @@
           organizationTypes: data['types'],
           organizationName: data['name']
         };
-        var new_div = $('<div/>', {class: "xsmall-card organization-card card-two-across", style: getMarginStyle(i)});
+        var new_div = $('<div/>', {class: "xsmall-card organization-card", style: getMarginStyle(i)});
         new_div.loadTemplate(organizationTemplatePath, renderData);
         dataDiv.append(new_div);
       }
@@ -117,7 +117,7 @@
           personName: data['name'],
           personHeadline: data['headline']
         };
-        var new_div = $('<div/>', {class: "xsmall-card person-card card-two-across", style: getMarginStyle(i)});
+        var new_div = $('<div/>', {class: "xsmall-card person-card", style: getMarginStyle(i)});
         new_div.loadTemplate(personTemplatePath, renderData);
         dataDiv.append(new_div);
       }
@@ -140,7 +140,7 @@
           activityDateContent: activity_date_content,
           propertyName: data['property_name']
         };
-        var new_div = $('<div/>', {class: "xsmall-card activity-card card-two-across", style: getMarginStyle(i)});
+        var new_div = $('<div/>', {class: "xsmall-card activity-card", style: getMarginStyle(i)});
         new_div.loadTemplate(activityTemplatePath, renderData);
         dataDiv.append(new_div);
       }

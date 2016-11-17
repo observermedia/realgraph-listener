@@ -63,7 +63,7 @@
     }
 
     function getMarginStyle(number) {
-      if (number % 2 == 1){
+      if (number % 2 == 0){
         return "margin-right: 25px;";
       } else {
         return "";

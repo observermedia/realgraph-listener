@@ -122,10 +122,17 @@
 
       for(var i=0 ; i<organizationsData.length ; i++){
         var data = organizationsData[i];
+        var org_types;
+
+        if (data['types'].length == 0){
+          org_types = 'Organization';
+        } else {
+          org_types = data['types'];
+        }
 
         var renderData = {
           organizationURL: data['url'],
-          organizationTypes: data['types'],
+          organizationTypes: org_types,
           organizationName: shortenCardTitle(data['name'], entityCardTitleLength)
         };
         var new_div = $('<div/>', {class: "xsmall-card organization-card", style: getMarginStyle(i)});

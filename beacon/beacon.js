@@ -9,6 +9,7 @@
     var activityTemplatePath = 'https://widget.commercialobserver.com/templates/activity.html';
     var jqueryVersion = "1.8.3";
     var scriptTag; //reference to the html script tag
+    var entityCardTitleLength = 30;
 
     /******** Get reference to self (scriptTag) *********/
     var allScripts = document.getElementsByTagName('script');
@@ -70,6 +71,35 @@
       }
     }
 
+    function shortenCardTitle(cardTitle, targetLength) {
+
+      if (cardTitle.length <= targetLength){
+        return cardTitle;
+      }
+
+      var titleFragments = cardTitle.split(' ');
+      var result = titleFragments[0];
+      var i = 1;
+
+      while (result.length + titleFragments[i].length < targetLength) {
+        result = result + ' ' + titleFragments[i];
+        i++;
+
+        if(i >= titleFragments.length) {
+          break;
+        }
+      }
+
+      // trim non-aphanumeric characters from the end of the result string
+      while (!/^[a-z0-9]+$/i.test(result[result.length-1])) {
+        result = result.substring(0, result.length - 1);
+      }
+
+      result = result + '...';
+
+      return result;
+    }
+
     function renderBuildingsInfo(dataDiv, buildingsData){
       dataDiv.append('<h3 class="story-entity-cards-header">Buildings in this story</h3>');
 
@@ -78,7 +108,7 @@
 
         var renderData = {
           buildingURL: data['url'],
-          buildingName: data['name'],
+          buildingName: shortenCardTitle(data['name'], entityCardTitleLength),
           address: data['address']
         };
         var new_div =$('<div/>', {class: "xsmall-card building-card", style: getMarginStyle(i)});
@@ -96,7 +126,7 @@
         var renderData = {
           organizationURL: data['url'],
           organizationTypes: data['types'],
-          organizationName: data['name']
+          organizationName: shortenCardTitle(data['name'], entityCardTitleLength)
         };
         var new_div = $('<div/>', {class: "xsmall-card organization-card", style: getMarginStyle(i)});
         new_div.loadTemplate(organizationTemplatePath, renderData);
@@ -114,7 +144,7 @@
         var renderData = {
           personURL: data['url'],
           personAvatar: data['avatar'],
-          personName: data['name'],
+          personName: shortenCardTitle(data['name'], entityCardTitleLength),
           personHeadline: data['headline']
         };
         var new_div = $('<div/>', {class: "xsmall-card person-card", style: getMarginStyle(i)});
@@ -138,13 +168,12 @@
           activityType: activity_type,
           activityTypeClass: activity_type_class,
           activityDateContent: activity_date_content,
-          propertyName: data['property_name']
+          propertyName: shortenCardTitle(data['property_name'], entityCardTitleLength)
         };
         var new_div = $('<div/>', {class: "xsmall-card activity-card", style: getMarginStyle(i)});
         new_div.loadTemplate(activityTemplatePath, renderData);
         dataDiv.append(new_div);
       }
-
     }
 
     function renderEntitiesData(data) {
@@ -186,7 +215,6 @@
         console.log(activitiesDataDiv);
       }
 
-      $('.dotdotdot').dotdotdot();
     }
 
     function pingListener(currentURL) {

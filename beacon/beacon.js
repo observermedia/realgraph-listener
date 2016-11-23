@@ -152,7 +152,7 @@
           personURL: data['url'],
           personAvatar: data['avatar'],
           personName: shortenCardTitle(data['name'], entityCardTitleLength),
-          personHeadline: data['headline']
+          personHeadline: shortenCardTitle(data['headline'], 40)
         };
         var new_div = $('<div/>', {class: "xsmall-card person-card", style: getMarginStyle(i)});
         new_div.loadTemplate(personTemplatePath, renderData);

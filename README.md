@@ -38,6 +38,16 @@ Insert the following script onto any page you'd like to track using the Realgrap
 <script type='text/javascript' async="async" src='http://realgraph-listener.herokuapp.com/beacon.js'></script>
 ```
 
+In order to display information about entities mentioned in the article, put the following div elements on your page:
+
+```
+<div id="realgraph-buildings-data"></div>
+<div id="realgraph-organizations-data"></div>
+<div id="realgraph-people-data"></div>
+<div id="realgraph-activities-data"></div>
+```
+Entities data will be inserted into those divs.
+
 For more information about using Node.js on Heroku, see these Dev Center articles:
 
 - [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)

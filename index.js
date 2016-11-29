@@ -15,6 +15,10 @@ var allowCrossDomain = function(req, res, next) {
     }
 };
 
+function getPathFromUrl(url) {
+  return url.split(/[?#]/)[0];
+}
+
 app.use(allowCrossDomain);
 
 var pg = require('pg');
@@ -28,11 +32,10 @@ app.get('/', function(request, response) {
 });
 
 app.get('/realgraph/listen', function(request, response) {
-	//request.query.url
-	//request.url
+  var urlPath = getPathFromUrl(request.query.url);
 	var queryString = "INSERT INTO realgraph_pings(url, hash) VALUES ($1, md5($2))";
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-		client.query(queryString, [request.query.url, request.query.url], function(err, result) {
+		client.query(queryString, [urlPath, urlPath], function(err, result) {
 			done();
 			if (err)
 				{
@@ -55,6 +58,7 @@ app.get('/realgraph/entities_data', function (request, response) {
 
   aws.config.update(aws_config);
   var DynamoClient = new aws.DynamoDB.DocumentClient();
+  var urlPath = getPathFromUrl(request.query.url);
 
   var query_params = {
     TableName: "EntityContent",
@@ -63,7 +67,7 @@ app.get('/realgraph/entities_data', function (request, response) {
       "#url": "article_url"
     },
     ExpressionAttributeValues: {
-      ":current_url": request.query.url
+      ":current_url": urlPath
     }
   };
 

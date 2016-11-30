@@ -32,6 +32,11 @@ app.get('/', function(request, response) {
 });
 
 app.get('/realgraph/listen', function(request, response) {
+  if (!request.query.url.startsWith(process.env.ALLOWED_ADDRESS_PATTERN)) {
+    response.json({status: false, message: 'Address not allowed'});
+    return;
+  }
+
   var urlPath = getPathFromUrl(request.query.url);
 	var queryString = "INSERT INTO realgraph_pings(url, hash) VALUES ($1, md5($2))";
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {

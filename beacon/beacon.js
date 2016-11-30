@@ -9,7 +9,7 @@
     var activityTemplatePath = 'https://widget.commercialobserver.com/templates/activity.html';
     var jqueryVersion = "1.8.3";
     var scriptTag; //reference to the html script tag
-    var entityCardTitleLength = 30;
+    var entityCardTitleLength = 25;
 
     /******** Get reference to self (scriptTag) *********/
     var allScripts = document.getElementsByTagName('script');

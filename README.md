@@ -7,7 +7,7 @@ Realgraph Listener listens for the Realgraph beacon installed on webpages.  It i
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
 ```sh
-$ git clone git@github.com:ronrlin/realgraph-listener.git 
+$ git clone git@github.com:observermedia/realgraph-listener.git 
 $ cd realgraph-listener
 $ npm install
 $ npm start

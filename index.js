@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+var ALLOWED_ADDRESSES = ['https://commercialobserver.com', 'http://staging.commercialobserver.com/'];
+
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -19,6 +21,15 @@ function getPathFromUrl(url) {
   return url.split(/[?#]/)[0];
 }
 
+function isAllowedAddress(addr) {
+  for (var i=0 ; i<ALLOWED_ADDRESSES.length ; i++){
+    if (addr.startsWith(ALLOWED_ADDRESSES[i])){
+      return true
+    }
+  }
+  return false
+}
+
 app.use(allowCrossDomain);
 
 var pg = require('pg');
@@ -32,7 +43,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/realgraph/listen', function(request, response) {
-  if (!request.query.url.startsWith(process.env.ALLOWED_ADDRESS_PATTERN)) {
+  if (!isAllowedAddress(request.query.url)) {
     response.json({status: false, message: 'Address not allowed'});
     return;
   }

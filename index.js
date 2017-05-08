@@ -111,7 +111,10 @@ app.get('/realgraph/entities_data', function (request, response) {
             organizations: [{
                 name: "Rabsky Group",
                 types: "Owner",
-                url : "https://realgraph.co/organizations/rabsky-group"}]
+                url : "https://realgraph.co/organizations/rabsky-group"}],
+            buildings: [],
+            activities: [],
+            people: []
             }
           )
       }

@@ -59,8 +59,9 @@
     function initjQuery() {
         jQuery = window.jQuery.noConflict(true);
         jQuery.getScript(jqueryTemplatePath, function(){
-          main();
+            console.log('jqueryTemplate has been loaded');
         });
+        main();
     }
 
     function getMarginStyle(number) {
@@ -111,7 +112,7 @@
           buildingName: shortenCardTitle(data['name'], entityCardTitleLength),
           address: data['address']
         };
-        var new_div =jQuery('<div/>', {class: "xsmall-card building-card", style: getMarginStyle(i)});
+        var new_div = jQuery('<div/>', {class: "xsmall-card building-card", style: getMarginStyle(i)});
         new_div.loadTemplate(buildingTemplatePath, renderData);
         dataDiv.append(new_div);
       }

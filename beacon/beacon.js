@@ -58,10 +58,10 @@
 
     function initjQuery() {
         jQuery = window.jQuery.noConflict(true);
-        jQuery.getScript(jqueryTemplatePath, function(){
+        loadScript(jqueryTemplatePath, function(){
             console.log('jqueryTemplate has been loaded');
+            main();
         });
-        main();
     }
 
     function getMarginStyle(number) {

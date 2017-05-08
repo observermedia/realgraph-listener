@@ -137,8 +137,8 @@
           organizationName: shortenCardTitle(data['name'], entityCardTitleLength)
         };
         var new_div = jQuery('<div/>', {class: "xsmall-card organization-card", style: getMarginStyle(i)});
-        new_div.append('<a href="'+ renderData['organizationURL'] + '" target="_self"><div class="box"></div><div class="organization-header"> <div class="avatar-container"><div class="avatar"></div></div><div class="name-type-container"><div class="more-label">'+ renderData['organizationTypes'] +'</div><h3 data-content="organizationName">'+ renderData['organizationName'] +'</h3></div></div></a>');
-        // new_div.loadTemplate(organizationTemplatePath, renderData);
+        // new_div.append('<a href="'+ renderData['organizationURL'] + '" target="_self"><div class="box"></div><div class="organization-header"> <div class="avatar-container"><div class="avatar"></div></div><div class="name-type-container"><div class="more-label">'+ renderData['organizationTypes'] +'</div><h3 data-content="organizationName">'+ renderData['organizationName'] +'</h3></div></div></a>');
+        new_div.loadTemplate(organizationTemplatePath, renderData);
         dataDiv.append(new_div);
       }
 

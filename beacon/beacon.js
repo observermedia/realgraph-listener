@@ -111,7 +111,7 @@
           buildingName: shortenCardTitle(data['name'], entityCardTitleLength),
           address: data['address']
         };
-        var new_div =$('<div/>', {class: "xsmall-card building-card", style: getMarginStyle(i)});
+        var new_div =jQuery('<div/>', {class: "xsmall-card building-card", style: getMarginStyle(i)});
         new_div.loadTemplate(buildingTemplatePath, renderData);
         dataDiv.append(new_div);
       }
@@ -135,7 +135,7 @@
           organizationTypes: org_types,
           organizationName: shortenCardTitle(data['name'], entityCardTitleLength)
         };
-        var new_div = $('<div/>', {class: "xsmall-card organization-card", style: getMarginStyle(i)});
+        var new_div = jQuery('<div/>', {class: "xsmall-card organization-card", style: getMarginStyle(i)});
         new_div.loadTemplate(organizationTemplatePath, renderData);
         dataDiv.append(new_div);
       }
@@ -154,7 +154,7 @@
           personName: shortenCardTitle(data['name'], entityCardTitleLength),
           personHeadline: shortenCardTitle(data['headline'], 40)
         };
-        var new_div = $('<div/>', {class: "xsmall-card person-card", style: getMarginStyle(i)});
+        var new_div = jQuery('<div/>', {class: "xsmall-card person-card", style: getMarginStyle(i)});
         new_div.loadTemplate(personTemplatePath, renderData);
         dataDiv.append(new_div);
       }
@@ -177,7 +177,7 @@
           activityDateContent: activity_date_content,
           propertyName: shortenCardTitle(data['property_name'], entityCardTitleLength)
         };
-        var new_div = $('<div/>', {class: "xsmall-card activity-card", style: getMarginStyle(i)});
+        var new_div = jQuery('<div/>', {class: "xsmall-card activity-card", style: getMarginStyle(i)});
         new_div.loadTemplate(activityTemplatePath, renderData);
         dataDiv.append(new_div);
       }

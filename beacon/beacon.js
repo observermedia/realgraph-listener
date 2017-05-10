@@ -159,7 +159,7 @@
         };
         var new_div = jQuery('<div/>', {class: "xsmall-card person-card", style: getMarginStyle(i)});
         // new_div.loadTemplate(personTemplatePath, renderData);
-        new_div.append('<a href href="'+ renderData['personURL'] +'" target="_self"><div class="box"></div><div class="person-header"><div class="avatar-container"><img class="avatar" src="https://widget.commercialobserver.com/default_avatar.png"/></div><div class="name-title-container"><h3>'+ renderData['personName'] +'</h3><div class="name-headline dotdotdot">'+ renderData['personHeadline'] +'</div></div></div></a>')
+        new_div.append('<a href="'+ renderData['personURL'] +'" target="_self"><div class="box"></div><div class="person-header"><div class="avatar-container"><img class="avatar" src="https://widget.commercialobserver.com/default_avatar.png"/></div><div class="name-title-container"><h3>'+ renderData['personName'] +'</h3><div class="name-headline dotdotdot">'+ renderData['personHeadline'] +'</div></div></div></a>')
         dataDiv.append(new_div);
       }
 

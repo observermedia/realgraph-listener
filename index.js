@@ -105,18 +105,9 @@ app.get('/realgraph/entities_data', function (request, response) {
         response.json(result);
       } else {
         response.json({
-          // status: false,
-          // description: 'This URL does not exist in Entity Content Database'}
-            status: true,
-            organizations: [{
-                name: "Rabsky Group",
-                types: "Owner",
-                url : "https://realgraph.co/organizations/rabsky-group"}],
-            buildings: [],
-            activities: [],
-            people: []
-            }
-          )
+          status: false,
+          description: 'This URL does not exist in Entity Content Database'}
+        )
       }
     }
   })

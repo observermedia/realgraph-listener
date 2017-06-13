@@ -183,7 +183,7 @@
         };
         var new_div = jQuery('<div/>', {class: "xsmall-card activity-card", style: getMarginStyle(i)});
         // new_div.loadTemplate(activityTemplatePath, renderData);
-        new_div.append('<a href="'+ renderData['activityURL'] +'" target="_self"><div class="box"></div><div class="activity-header"><div class="avatar-container"><div class="avatar"></div></div><div class="name-type-container"><div class="'+ renderData['activityTypeClass'] +'">'+ renderData['activityType'] +'</div><div class="more-label">'+ renderData['activityDateContent'] +'</div><h3>'+ renderData['propertyName'] +'</h3></div></div></a>');
+        new_div.append('<a href="'+ renderData['activityURL'] +'" target="_self"><div class="box"></div><div class="activity-header"><div class="avatar-container"><div class="avatar"></div></div><div class="name-type-container"><div class="'+ renderData['activityTypeClass'] +'" style="display: inline;">'+ renderData['activityType'] +'</div><div class="more-label" style="display: inline">'+ renderData['activityDateContent'] +'</div><h3>'+ renderData['propertyName'] +'</h3></div></div></a>');
         dataDiv.append(new_div);
       }
     }
